@@ -1,9 +1,37 @@
 <div style="text-align:center">
-
-  <ng-content select=".text"></ng-content>
-
-  <ng-content select=".buttons"></ng-content>
-
-  <ng-content select=".badges"></ng-content>
+  form componente
   
+  <div class="text-search-container">
+    <ng-content select=".text"></ng-content>
+    <form>
+      <mat-form-field>
+        <input matInput placeholder="Search for Movie">
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div class="button-search-container">
+    <ng-content select=".buttons"></ng-content>
+    <button mat-raised-button>Button</button>
+  </div>
+
+  <div class="badge-search-container">
+    <ng-content select=".badges"></ng-content>
+    <button mat-fab color="warn">Filter</button>
+  </div>
+
+  <ng-container *ngFor="let buttonTemplate of buttons">
+    <ng-template [ngTemplateOutlet]="buttonTemplate.content">
+    </ng-template>
+  </ng-container>
+
+  <ng-container *ngFor="let inputTemplate of inputs">
+    <ng-template [ngTemplateOutlet]="inputTemplate.content">
+    </ng-template>
+  </ng-container>
+
+  <ng-container *ngFor="let badgesTemplate of badges">
+    <ng-template [ngTemplateOutlet]="badgesTemplate.content">
+    </ng-template>
+  </ng-container>
 </div>

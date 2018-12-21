@@ -1,5 +1,25 @@
+<app-main>
+
+  <app-form class="form">
+    <ng-container *ngFor="let n of arr">
+        <app-form-button>{{n}}</app-form-button>
+    </ng-container>
+
+    <ng-container *ngFor="let n of arr">
+        <app-form-input>{{n}}</app-form-input>
+    </ng-container>
+
+    <ng-container *ngFor="let n of arr">
+        <app-form-badge>{{n}}</app-form-badge>
+    </ng-container>
+  </app-form>
+
+  <app-list class="list"></app-list>
+
+</app-main>
+
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!-- <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
   </h1>
@@ -18,4 +38,4 @@
   </li>
 </ul>
 
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->

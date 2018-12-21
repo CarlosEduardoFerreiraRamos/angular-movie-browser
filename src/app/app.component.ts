@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-movie-browser';
+  arr = [0,1,2,3,4,5,6];
 }

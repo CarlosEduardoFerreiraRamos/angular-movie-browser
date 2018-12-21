@@ -6,6 +6,7 @@ import { MainComponent } from './main.component';
   declarations: [MainComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [MainComponent]
 })
 export class MainModule { }
