@@ -20,18 +20,33 @@
     <button mat-fab color="warn">Filter</button>
   </div>
 
-  <ng-container *ngFor="let buttonTemplate of buttons">
-    <ng-template [ngTemplateOutlet]="buttonTemplate.content">
-    </ng-template>
-  </ng-container>
+  <div class="text-search-container">
+    <form>
+      <ng-container *ngFor="let inputTemplate of inputs">
+          <mat-form-field>
+            <ng-template [ngTemplateOutlet]="inputTemplate.content">
+            </ng-template>
+            <input matInput placeholder="Search for Movie">
+          </mat-form-field>
+      </ng-container>
+    </form>
+  </div>
 
-  <ng-container *ngFor="let inputTemplate of inputs">
-    <ng-template [ngTemplateOutlet]="inputTemplate.content">
-    </ng-template>
-  </ng-container>
+  <div class="button-search-container">
+    <ng-container *ngFor="let buttonTemplate of buttons">
+        <button mat-raised-button>
+          <ng-template [ngTemplateOutlet]="buttonTemplate.content">
+          </ng-template>
+        </button>
+    </ng-container>
+  </div>
 
-  <ng-container *ngFor="let badgesTemplate of badges">
-    <ng-template [ngTemplateOutlet]="badgesTemplate.content">
-    </ng-template>
-  </ng-container>
+  <div class="badge-search-container">
+    <ng-container *ngFor="let badgesTemplate of badges">
+        <button mat-fab color="warn">
+          <ng-template [ngTemplateOutlet]="badgesTemplate.content">
+          </ng-template>
+        </button>
+    </ng-container>
+  </div>
 </div>
