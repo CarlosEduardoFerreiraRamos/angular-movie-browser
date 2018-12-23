@@ -8,6 +8,7 @@ import { ListModule } from './components/list/list.module';
 import { FormModule } from './components/form/form.module';
 import { ModalModule } from './components/modal/modal.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatInputModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MainModule,
     ListModule,
     FormModule,
+    MatButtonModule,
+    MatInputModule,
     BrowserAnimationsModule,
     AppRoutingModule
   ],
