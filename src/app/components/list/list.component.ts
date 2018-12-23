@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ListService } from './list.service';
 
 @Component({
   selector: 'app-list',
@@ -7,11 +8,22 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  @Input() displayedColumns = ['number', 'extended'];
 
-  @Input() list: [any];
+  @Input()
+  set list(list: [any]) {
+    if (list) {
+      this._list = list;
+    }
+  }
 
-  displayedColumns = ['number', 'extended'];
+  private _list: [any];
+
+  get list() {
+    return this._list;
+  }
+
+  constructor(private _service: ListService) { }
 
   ngOnInit() {
   }

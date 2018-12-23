@@ -1,4 +1,5 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ContentChild } from '@angular/core';
+import { ModalTitleDetailDirective } from './modal-title-detail.directive';
 
 @Component({
   selector: 'app-modal-title',
@@ -8,6 +9,9 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 export class ModalTitleComponent implements OnInit {
 
   @ViewChild(TemplateRef) content: TemplateRef<any>;
+
+  @ContentChild(ModalTitleDetailDirective) detail: ModalTitleDetailDirective;
+
 
   constructor() { }
 

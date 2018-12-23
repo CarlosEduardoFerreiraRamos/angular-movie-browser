@@ -7,6 +7,7 @@ import { ModalTitleComponent } from './modal-title/modal-title.component';
 import { ModalContentComponent } from './modal-content/modal-content.component';
 import { ModalActionsComponent } from './modal-actions/modal-actions.component';
 import { ModalCloseComponent } from './modal-close/modal-close.component';
+import { ModalTitleDetailDirective } from './modal-title/modal-title-detail.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ModalCloseComponent } from './modal-close/modal-close.component';
     ModalTitleComponent,
     ModalContentComponent,
     ModalActionsComponent,
-    ModalCloseComponent
+    ModalCloseComponent,
+    ModalTitleDetailDirective
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { ModalCloseComponent } from './modal-close/modal-close.component';
     ModalTitleComponent,
     ModalContentComponent,
     ModalActionsComponent,
-    ModalCloseComponent
+    ModalCloseComponent,
+    ModalTitleDetailDirective
   ],
   providers: [MatDialog]
 })

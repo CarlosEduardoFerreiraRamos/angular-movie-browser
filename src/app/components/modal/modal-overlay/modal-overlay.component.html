@@ -1,6 +1,13 @@
-<h2 mat-dialog-title>
-    <ng-template [ngTemplateOutlet]="titleTemplate.content"></ng-template>
-</h2>
+<ng-container *ngIf="!titleTemplate.detail">
+    <h2 mat-dialog-title>
+        <ng-template [ngTemplateOutlet]="titleTemplate.content"></ng-template>
+    </h2>
+</ng-container>
+
+<ng-container *ngIf="titleTemplate.detail">
+    <ng-template [ngTemplateOutlet]="titleTemplate.detail.template"></ng-template>
+</ng-container>
+
 <mat-dialog-content>
     <ng-template [ngTemplateOutlet]="contentTemplate.content"></ng-template>
 </mat-dialog-content>

@@ -27,6 +27,8 @@ export class ModalComponent implements OnInit {
   }
 
   onOpen() {
+
+    console.log(this.titleTemplate)
     const dialogRef = this._dialog.open(ModalOverlayComponent, {
       width: '400px',
       height: '400px',
