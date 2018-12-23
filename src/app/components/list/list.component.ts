@@ -12,6 +12,7 @@ export class ListComponent implements OnInit {
 
   @Input()
   set list(list: [any]) {
+    console.log(list)
     if (list) {
       this._list = list;
     }

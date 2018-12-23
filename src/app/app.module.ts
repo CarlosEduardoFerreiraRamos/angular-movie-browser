@@ -9,6 +9,7 @@ import { FormModule } from './components/form/form.module';
 import { ModalModule } from './components/modal/modal.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatInputModule } from '@angular/material';
+import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MatButtonModule, MatInputModule } from '@angular/material';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     ModalModule,
     MainModule,
     ListModule,
@@ -25,7 +27,7 @@ import { MatButtonModule, MatInputModule } from '@angular/material';
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
