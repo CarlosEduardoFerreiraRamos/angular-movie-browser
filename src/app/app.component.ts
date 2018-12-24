@@ -8,7 +8,7 @@ import { MovieRef } from './services/movie/movie-responses';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'angular-movie-browser';
   arr = [0,1,2,3,4,5,6];
   list = [{number: 0}, {number: 1}, {number: 2}, {number: 3}, {number: 4}, {number: 5}, {number: 6}];
@@ -25,5 +25,9 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.list$ = this._movieService.searchMovie({s: 'dre'});
+  }
+
+  onSearch($event: Observable<any>) {
+    $event.subscribe( (result) => this.list$ = this._movieService.searchMovie(result));
   }
 }

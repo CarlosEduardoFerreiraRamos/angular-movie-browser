@@ -1,32 +1,13 @@
-<div style="text-align:center">
+<div *ngIf="data$ | async as data" style="text-align:center">
   form componente
-  
-  <div class="text-search-container">
-    <ng-content select=".text"></ng-content>
-    <form>
-      <mat-form-field>
-        <input matInput placeholder="Search for Movie">
-      </mat-form-field>
-    </form>
-  </div>
-
-  <div class="button-search-container">
-    <ng-content select=".buttons"></ng-content>
-    <button mat-raised-button>Button</button>
-  </div>
-
-  <div class="badge-search-container">
-    <ng-content select=".badges"></ng-content>
-    <button mat-fab color="warn">Filter</button>
-  </div>
 
   <div class="text-search-container">
     <form>
       <ng-container *ngFor="let inputTemplate of inputs">
-          <mat-form-field>
+          <mat-form-field class="mat-form-input-container">
             <ng-template [ngTemplateOutlet]="inputTemplate.content">
             </ng-template>
-            <input matInput placeholder="Search for Movie">
+            <input matInput name="text" [(ngModel)]="data.s" placeholder="Search for Movie" (keyup)="onValueChange()">
           </mat-form-field>
       </ng-container>
     </form>
@@ -34,7 +15,7 @@
 
   <div class="button-search-container">
     <ng-container *ngFor="let buttonTemplate of buttons">
-        <button mat-raised-button>
+        <button mat-raised-button (click)="onButtonClick()">
           <ng-template [ngTemplateOutlet]="buttonTemplate.content">
           </ng-template>
         </button>
@@ -43,7 +24,7 @@
 
   <div class="badge-search-container">
     <ng-container *ngFor="let badgesTemplate of badges">
-        <button mat-fab color="warn">
+        <button mat-fab color="warn" (click)="onBadgeClick()">
           <ng-template [ngTemplateOutlet]="badgesTemplate.content">
           </ng-template>
         </button>

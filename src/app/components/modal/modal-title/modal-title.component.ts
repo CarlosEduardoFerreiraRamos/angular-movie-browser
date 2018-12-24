@@ -12,7 +12,6 @@ export class ModalTitleComponent implements OnInit {
 
   @ContentChild(ModalTitleDetailDirective) detail: ModalTitleDetailDirective;
 
-
   constructor() { }
 
   ngOnInit() {

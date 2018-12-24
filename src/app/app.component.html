@@ -1,38 +1,43 @@
 <app-main>
-
-  <app-form class="form">
+  <app-form class="form" (submit)="onSearch($event)">
     <ng-container *ngFor="let n of arr">
         <app-form-button>{{n}}</app-form-button>
     </ng-container>
-
     <app-form-input></app-form-input>
-    <app-form-input></app-form-input>
-    <app-form-input></app-form-input>
-    
     <ng-container *ngFor="let n of arr">
         <app-form-badge>{{n}}</app-form-badge>
     </ng-container>
   </app-form>
 
-  <app-list class="movie-list-container" [displayedColumns]="displayedColumns" [list]="list$ | async"></app-list>
+  <app-list
+    class="movie-list-container"
+    [displayedColumns]="displayedColumns"
+    [list]="list$ | async">
+  </app-list>
 </app-main>
 
-<app-modal>
+<app-modal #movieDetail>
     Modal tag here
   <app-modal-title>
-    <ng-template appModalTitleDetail>
+    <ng-template app-modal-title-detail>
       <h2>
         Title
       </h2>
     </ng-template>
   </app-modal-title>
   <app-modal-content>
-    Modal here
+    <ng-template app-modal-content-detail>
+        Modal in template here
+    </ng-template>
   </app-modal-content>
   <app-modal-actions>
-    <button mat-button>Modal Button</button>
+    <ng-template app-modal-actions-detail>
+      <button mat-button>Modal Button</button>
+    </ng-template>
   </app-modal-actions>
   <app-modal-close>
     <button mat-button>Modal Close Button</button>
   </app-modal-close>
 </app-modal>
+
+<button (click)="movieDetail.onOpen()">OPEN MODAL OUSIDE</button>

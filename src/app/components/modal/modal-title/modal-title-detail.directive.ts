@@ -1,7 +1,7 @@
-import { Directive, TemplateRef, ViewContainerRef, ElementRef } from '@angular/core';
+import { Directive, TemplateRef } from '@angular/core';
 
 @Directive({
-  selector: '[appModalTitleDetail]'
+  selector: 'app-modal-title-detail,[app-modal-title-detail],[appModalTitleDetail]'
 })
 export class ModalTitleDetailDirective {
 

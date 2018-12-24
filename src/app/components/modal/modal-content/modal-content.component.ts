@@ -1,4 +1,5 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ContentChild } from '@angular/core';
+import { ModalContentDetailDirective } from './modal-content-detail.directive';
 
 @Component({
   selector: 'app-modal-content',
@@ -8,6 +9,8 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 export class ModalContentComponent implements OnInit {
 
   @ViewChild(TemplateRef) content: TemplateRef<any>;
+
+  @ContentChild(ModalContentDetailDirective) detail: ModalContentDetailDirective;
 
   constructor() { }
 

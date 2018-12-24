@@ -9,15 +9,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormButtonComponent } from './form-button/form-button.component';
 import { FormBadgeComponent } from './form-badge/form-badge.component';
 import { FormInputComponent } from './form-input/form-input.component';
+import { FormService } from './form.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations:
-  [FormComponent,
+  [
+    FormComponent,
     FormButtonComponent,
     FormBadgeComponent,
     FormInputComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -28,6 +32,10 @@ import { FormInputComponent } from './form-input/form-input.component';
     FormComponent,
     FormButtonComponent,
     FormBadgeComponent,
-    FormInputComponent]
+    FormInputComponent
+  ],
+  providers: [
+    FormService
+  ]
 })
 export class FormModule { }

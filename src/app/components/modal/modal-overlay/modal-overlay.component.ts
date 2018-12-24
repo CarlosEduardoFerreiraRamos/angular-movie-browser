@@ -4,6 +4,7 @@ import { ModalTitleComponent } from '../modal-title/modal-title.component';
 import { ModalContentComponent } from '../modal-content/modal-content.component';
 import { ModalActionsComponent } from '../modal-actions/modal-actions.component';
 import { ModalCloseComponent } from '../modal-close/modal-close.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-modal-overlay',
@@ -11,6 +12,8 @@ import { ModalCloseComponent } from '../modal-close/modal-close.component';
   styleUrls: ['./modal-overlay.component.scss']
 })
 export class ModalOverlayComponent implements OnInit {
+
+  public data$: Observable<any>;
 
   public titleTemplate: ModalTitleComponent;
 
@@ -24,18 +27,20 @@ export class ModalOverlayComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ModalOverlayComponent>,
     @Inject(MAT_DIALOG_DATA) public data) {
-      const {
-        titleTemplate,
-        contentTemplate,
-        actionsTemplate,
-        closeTemplate
-      } = data;
+    const {
+      data$,
+      titleTemplate,
+      contentTemplate,
+      actionsTemplate,
+      closeTemplate
+    } = data;
 
-      this.titleTemplate = titleTemplate;
-      this.contentTemplate = contentTemplate;
-      this.actionsTemplate = actionsTemplate;
-      this.closeTemplate = closeTemplate;
-    }
+    this.data$ = data$;
+    this.titleTemplate = titleTemplate;
+    this.contentTemplate = contentTemplate;
+    this.actionsTemplate = actionsTemplate;
+    this.closeTemplate = closeTemplate;
+  }
 
   ngOnInit() {
   }

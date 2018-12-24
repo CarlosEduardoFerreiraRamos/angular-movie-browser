@@ -13,8 +13,12 @@ export class MovieService {
   constructor(private _http: HttpClient) { }
 
   public searchMovie(options: MovieSearchOptions): Observable<any> {
+    console.log('options: ', options)
     return this.getMovie(`${this.path}`, options)
-      .pipe(map( (response) => response.Search));
+      .pipe(map( (response) => {
+        console.log('response: ',response)
+        return response.Search
+      }));
   }
 
   private getMovie(path: string, options: MovieSearchOptions): Observable<any> {
