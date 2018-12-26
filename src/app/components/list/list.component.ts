@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ListService } from './list.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { ListService } from './list.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+
+  @Output() rowClick: EventEmitter<any> = new EventEmitter<any>();
 
   @Input() displayedColumns = ['number', 'extended'];
 
@@ -27,6 +29,10 @@ export class ListComponent implements OnInit {
   constructor(private _service: ListService) { }
 
   ngOnInit() {
+  }
+
+  public onClick(row): void {
+    this.rowClick.emit(row);
   }
 
 }

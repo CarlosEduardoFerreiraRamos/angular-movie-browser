@@ -1,37 +1,40 @@
 <ng-container *ngIf="data$ | async as detail">
-    <ng-container *ngIf="!titleTemplate.detail">
-        <h2 mat-dialog-title>
-            <ng-template [ngTemplateOutlet]="titleTemplate.content"></ng-template>
-        </h2>
+    <ng-container *ngIf="titleTemplate">
+        <ng-container *ngIf="!titleTemplate.detail">
+            <h2 mat-dialog-title>
+                <ng-template [ngTemplateOutlet]="titleTemplate.content"></ng-template>
+            </h2>
+        </ng-container>
+        <ng-container *ngIf="titleTemplate.detail">
+            <ng-template
+                [ngTemplateOutlet]="titleTemplate.detail.template"
+                [ngTemplateOutletContext]="{$implicit: detail}">
+            </ng-template>
+        </ng-container>
     </ng-container>
 
-    <ng-container *ngIf="titleTemplate.detail">
-        <ng-template
-            [ngTemplateOutlet]="titleTemplate.detail.template"
-            [ngTemplateOutletContext]="{$implicit: detail}">
-        </ng-template>
+    <ng-container *ngIf="contentTemplate">
+        <mat-dialog-content *ngIf="!contentTemplate.detail">
+            <ng-template [ngTemplateOutlet]="contentTemplate.content"></ng-template>
+        </mat-dialog-content>
+        <mat-dialog-content *ngIf="contentTemplate.detail">
+            <ng-template
+                [ngTemplateOutlet]="contentTemplate.detail.template"
+                [ngTemplateOutletContext]="{$implicit: detail}">
+            </ng-template>
+        </mat-dialog-content>
     </ng-container>
 
-    <mat-dialog-content *ngIf="!contentTemplate.detail">
-        <ng-template [ngTemplateOutlet]="contentTemplate.content"></ng-template>
-    </mat-dialog-content>
-
-    <mat-dialog-content *ngIf="contentTemplate.detail">
-        <ng-template
-            [ngTemplateOutlet]="contentTemplate.detail.template"
-            [ngTemplateOutletContext]="{$implicit: detail}">
-        </ng-template>
-    </mat-dialog-content>
-
-    <mat-dialog-actions *ngIf="!actionsTemplate.detail">
-            <ng-template [ngTemplateOutlet]="actionsTemplate.content"></ng-template>
-    </mat-dialog-actions>
-
-    <mat-dialog-actions *ngIf="actionsTemplate.detail">
-            <ng-template 
-                [ngTemplateOutlet]="actionsTemplate.detail.template"
-                [ngTemplateOutletContext]="{$implicit: dialogRef}"
-            ></ng-template>
-    </mat-dialog-actions>
+    <ng-container *ngIf="actionsTemplate">
+        <mat-dialog-actions *ngIf="!actionsTemplate.detail">
+                <ng-template [ngTemplateOutlet]="actionsTemplate.content"></ng-template>
+        </mat-dialog-actions>
+        <mat-dialog-actions *ngIf="actionsTemplate.detail">
+                <ng-template 
+                    [ngTemplateOutlet]="actionsTemplate.detail.template"
+                    [ngTemplateOutletContext]="{$implicit: dialogRef}"
+                ></ng-template>
+        </mat-dialog-actions>
+    </ng-container>        
 </ng-container>
 <!-- <ng-template [ngTemplateOutlet]="closeTemplate.content"></ng-template> -->
