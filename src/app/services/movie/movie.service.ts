@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { MovieSearchOptions } from './movie-options';
+import { MovieSearchOptions, MovieIdOptions } from './movie-options';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +14,22 @@ export class MovieService {
 
   public searchMovie(options: MovieSearchOptions): Observable<any> {
     console.log('options: ', options)
-    return this.getMovie(`${this.path}`, options)
+    return this.get(`${this.path}`, options)
       .pipe(map( (response) => {
         console.log('response: ',response)
         return response.Search
       }));
   }
 
-  private getMovie(path: string, options: MovieSearchOptions): Observable<any> {
+  public getMovie(imdbId: string): Observable<any> {
+    return this.get(`${this.path}`, {i: imdbId})
+      .pipe( map( (response) => {
+        console.log('detail response: ',response)
+        return response;
+      }));
+  }
+
+  private get(path: string, options): Observable<any> {
     return this._http.get(path, this.buildOption(options));
   }
 

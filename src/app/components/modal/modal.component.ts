@@ -40,12 +40,12 @@ export class ModalComponent implements OnInit {
   ngOnInit() {
   }
 
-  onOpen() {
+  onOpen(data$) {
     const dialogRef = this._dialog.open(ModalOverlayComponent, {
       width: '400px',
       height: '400px',
       data: {
-        data$: this.data$ || of('No value in data$'),
+        data$: data$ ? data$ : this.data$ || of('No value in data$'),
         titleTemplate: this.titleTemplate,
         contentTemplate: this.contentTemplate,
         actionsTemplate: this.actionsTemplate,

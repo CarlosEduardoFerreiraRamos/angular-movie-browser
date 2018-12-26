@@ -21,13 +21,19 @@ export class AppComponent implements OnInit {
     // 'Poster'
   ];
 
+  objectKeys = Object.keys;
+
   constructor(private _movieService: MovieService) { }
 
   ngOnInit() {
     this.list$ = this._movieService.searchMovie({s: 'dre'});
   }
 
-  onSearch($event: Observable<any>) {
+  public onSearch($event: Observable<any>): void {
     $event.subscribe( (result) => this.list$ = this._movieService.searchMovie(result));
+  }
+
+  public onOpenDetail(imdbId): Observable<any> {
+    return this._movieService.getMovie(imdbId);
   }
 }

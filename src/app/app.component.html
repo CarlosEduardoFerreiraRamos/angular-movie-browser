@@ -19,15 +19,22 @@
 <app-modal #movieDetail>
     Modal tag here
   <app-modal-title>
-    <ng-template app-modal-title-detail>
+    <ng-template app-modal-title-detail let-detail>
       <h2>
-        Title
+        {{detail.Title}}
       </h2>
     </ng-template>
   </app-modal-title>
   <app-modal-content>
-    <ng-template app-modal-content-detail>
-        Modal in template here
+    <ng-template app-modal-content-detail let-detail>
+        <ng-container *ngIf="detail['Poster']" >
+          <img src="{{detail['Poster']}}" alt="Movie Poster" >
+        </ng-container>
+        <ng-container *ngFor="let item of objectKeys(detail)">
+            <p *ngIf="detail[item] !== 'N/A' && item !== 'Poster' && item !== 'Ratings'">
+              <strong>{{item}}:</strong> {{detail[item]}}
+            </p>
+        </ng-container>
     </ng-template>
   </app-modal-content>
   <app-modal-actions>
@@ -40,4 +47,4 @@
   </app-modal-close>
 </app-modal>
 
-<button (click)="movieDetail.onOpen()">OPEN MODAL OUSIDE</button>
+<button (click)="movieDetail.onOpen(onOpenDetail('tt5875282'))">OPEN MODAL OUSIDE</button>
