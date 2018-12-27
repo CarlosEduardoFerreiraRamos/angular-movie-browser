@@ -9,8 +9,9 @@ import { FormModule } from './components/form/form.module';
 import { ModalModule } from './components/modal/modal.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatInputModule } from '@angular/material';
-import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ToolbarModule } from './components/toolbar/toolbar.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ToolbarModule } from './components/toolbar/toolbar.module';
     ListModule,
     FormModule,
     ToolbarModule,
+    FlexLayoutModule,
     MatButtonModule,
     MatInputModule,
     BrowserAnimationsModule,

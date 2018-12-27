@@ -1,9 +1,13 @@
 <app-toolbar [name]="title"></app-toolbar>
 
+<div class="structural-space"></div>
+
 <app-main>
   <app-form class="form" (valueChange)="onSearch($event)">
     <app-form-input></app-form-input>
   </app-form>
+
+  <div class="structural-space"></div>
 
   <app-list
     class="movie-list-container"
@@ -13,24 +17,44 @@
   </app-list>
 </app-main>
 
+<div class="structural-space"></div>
+
 <app-modal #movieDetail>
   <app-modal-title>
     <ng-template app-modal-title-detail let-detail>
-      <h2>{{detail.Title}}</h2>
+        <app-toolbar [name]="detail.Title">
+        </app-toolbar>
     </ng-template>
   </app-modal-title>
+
   <app-modal-content>
     <ng-template app-modal-content-detail let-detail>
-        <ng-container *ngIf="detail['Poster'] && detail['Poster'] !== 'N/A'" >
-          <img src="{{detail['Poster']}}" alt="Movie Poster" >
-        </ng-container>
-        <ng-container *ngFor="let item of objectKeys(detail)">
-            <p *ngIf="detail[item] !== 'N/A' && item !== 'Poster' && item !== 'Ratings'">
-              <strong>{{item}}:</strong> {{detail[item]}}
-            </p>
-        </ng-container>
+        <div class="structural-space"></div>
+        
+        <div 
+            fxLayout="row wrap" 
+            fxLayout.lt-sm="column" 
+            fxLayoutGap="32px" 
+            fxLayoutAlign="flex-start">
+          <div 
+            fxFlex="0 1 calc(33.3% - 32px)"
+            fxFlex.lt-md="0 1 calc(50% - 32px)"
+            fxFlex.lt-sm="100%"
+            *ngIf="detail['Poster'] && detail['Poster'] !== 'N/A'" >
+            <img src="{{detail['Poster']}}" alt="Movie Poster" >
+          </div>
+          <div 
+            fxFlex="0 1 calc(33.3% - 32px)"
+            fxFlex.lt-md="0 1 calc(50% - 32px)"
+            fxFlex.lt-sm="100%">
+              <ng-container *ngFor="let item of objectKeys(detail)">
+                  <p *ngIf="detail[item] !== 'N/A' && ['Poster','Ratings','Title'].indexOf(item) === -1">
+                    <strong>{{item}}:</strong> {{detail[item]}}
+                  </p>
+              </ng-container>
+          </div>
+        </div>
+
     </ng-template>
   </app-modal-content>
 </app-modal>
-
-<!-- <button (click)="movieDetail.onOpen(onOpenDetail('tt5875282'))">OPEN MODAL OUSIDE</button> -->

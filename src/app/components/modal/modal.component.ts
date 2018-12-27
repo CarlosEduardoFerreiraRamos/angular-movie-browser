@@ -42,8 +42,8 @@ export class ModalComponent implements OnInit {
 
   onOpen(data$) {
     const dialogRef = this._dialog.open(ModalOverlayComponent, {
-      width: '400px',
-      height: '400px',
+      width: '800px',
+      height: '600px',
       data: {
         data$: data$ ? data$ : this.data$ || of('No value in data$'),
         titleTemplate: this.titleTemplate,

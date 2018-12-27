@@ -9,18 +9,18 @@ import { MovieRef } from './services/movie/movie-responses';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Movie Browser';
-  list = [{number: 0}, {number: 1}, {number: 2}, {number: 3}, {number: 4}, {number: 5}, {number: 6}];
+  public title = 'Movie Browser';
+
   public list$: Observable<[MovieRef]>;
+
   public displayedColumns = [
     'Title',
     'Year',
     'imdbID',
-    'Type',
-    // 'Poster'
+    'Type'
   ];
 
-  objectKeys = Object.keys;
+  public objectKeys = Object.keys;
 
   constructor(private _movieService: MovieService) { }
 
