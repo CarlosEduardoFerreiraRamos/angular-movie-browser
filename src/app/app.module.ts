@@ -10,6 +10,7 @@ import { ModalModule } from './components/modal/modal.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatInputModule } from '@angular/material';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
+import { ToolbarModule } from './components/toolbar/toolbar.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http'
     MainModule,
     ListModule,
     FormModule,
+    ToolbarModule,
     MatButtonModule,
     MatInputModule,
     BrowserAnimationsModule,

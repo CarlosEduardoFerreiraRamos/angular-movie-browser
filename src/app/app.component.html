@@ -1,12 +1,8 @@
+<app-toolbar [name]="title"></app-toolbar>
+
 <app-main>
-  <app-form class="form" (submit)="onSearch($event)">
-    <ng-container *ngFor="let n of arr">
-        <app-form-button>{{n}}</app-form-button>
-    </ng-container>
+  <app-form class="form" (valueChange)="onSearch($event)">
     <app-form-input></app-form-input>
-    <ng-container *ngFor="let n of arr">
-        <app-form-badge>{{n}}</app-form-badge>
-    </ng-container>
   </app-form>
 
   <app-list
