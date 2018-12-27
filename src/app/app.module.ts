@@ -12,6 +12,8 @@ import { MatButtonModule, MatInputModule } from '@angular/material';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ToolbarModule } from './components/toolbar/toolbar.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { PopupMessageComponent } from './components/popup-message/popup-message.component';
+import { PopupMessageModule } from './components/popup-message/popup-message.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     FormModule,
     ToolbarModule,
     FlexLayoutModule,
+    PopupMessageModule,
     MatButtonModule,
     MatInputModule,
     BrowserAnimationsModule,

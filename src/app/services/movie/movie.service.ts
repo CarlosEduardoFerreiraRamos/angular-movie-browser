@@ -14,18 +14,11 @@ export class MovieService {
 
   public searchMovie(options: MovieSearchOptions): Observable<any> {
     return this.get(`${this.path}`, options)
-      .pipe(map( (response) => {
-        console.log('response: ',response)
-        return response.Search
-      }));
+      .pipe(map( (response) => response.Search));
   }
 
   public getMovie(imdbId: string): Observable<any> {
-    return this.get(`${this.path}`, {i: imdbId})
-      .pipe( map( (response) => {
-        console.log('detail response: ',response)
-        return response;
-      }));
+    return this.get(`${this.path}`, {i: imdbId});
   }
 
   private get(path: string, options: MovieIdOptions | MovieSearchOptions): Observable<any> {
@@ -39,6 +32,8 @@ export class MovieService {
   private buildOption(options): {params} {
     let params = new HttpParams();
     params = this.addApiKey(params);
+    params = this.addMandatoryFilters(params);
+
     for (const prop in options) {
       if (options[prop]) {
         params = params.append(prop, options[prop]);
@@ -49,5 +44,9 @@ export class MovieService {
 
   private addApiKey(httpParams: HttpParams): HttpParams {
     return httpParams.append('apikey', environment.movieApiKey);
+  }
+
+  private addMandatoryFilters(httpParams: HttpParams): HttpParams {
+    return httpParams.append('type', 'movie');
   }
 }

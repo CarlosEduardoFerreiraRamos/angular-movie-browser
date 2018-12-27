@@ -36,8 +36,10 @@ export class FormComponent implements OnInit {
     this._service.setData({});
   }
 
-  public onValueChange(): void {
-    this.emitData(this.valueChange);
+  public onValueChange($event): void {
+    if ($event && [37, 38, 39, 40].indexOf($event.keyCode) === -1) {
+      this.emitData(this.valueChange);
+    }
   }
 
   public onButtonClick(): void {
