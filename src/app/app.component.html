@@ -38,23 +38,29 @@
             fxLayout.lt-sm="column" 
             fxLayoutGap="32px" 
             fxLayoutAlign="flex-start">
+          
           <div 
             fxFlex="0 1 calc(33.3% - 32px)"
             fxFlex.lt-md="0 1 calc(50% - 32px)"
             fxFlex.lt-sm="100%"
             *ngIf="detail['Poster'] && detail['Poster'] !== 'N/A'" >
+
             <img src="{{detail['Poster']}}" alt="Movie Poster" >
+
           </div>
+
           <div 
             fxFlex="0 1 calc(33.3% - 32px)"
             fxFlex.lt-md="0 1 calc(50% - 32px)"
             fxFlex.lt-sm="100%">
+
               <ng-container *ngFor="let item of objectKeys(detail)">
                   <p *ngIf="detail[item] !== 'N/A' && ['Poster','Ratings','Title'].indexOf(item) === -1">
                     <strong>{{item}}:</strong> {{detail[item]}}
                   </p>
               </ng-container>
           </div>
+          
         </div>
 
     </ng-template>
