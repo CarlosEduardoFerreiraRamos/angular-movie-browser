@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MovieService } from './services/movie/movie.service';
 import { Observable, pipe } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 import { MovieRef } from './services/movie/movie-responses';
 import { PopupMessageComponent } from './components/popup-message/popup-message.component';
 
@@ -46,6 +46,11 @@ export class AppComponent implements OnInit {
   }
 
   public onOpenDetail(imdbId): Observable<any> {
-    return this._movieService.getMovie(imdbId);
+    return this._movieService.getMovie(imdbId).pipe(map( (value) => [value]));
+  }
+
+  public onAddMovie(data, array): void {
+    this._movieService.getMovie(data)
+      .subscribe( next => array.push(next));
   }
 }
