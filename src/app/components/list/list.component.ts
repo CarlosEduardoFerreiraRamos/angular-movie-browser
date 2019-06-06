@@ -13,13 +13,13 @@ export class ListComponent implements OnInit {
   @Input() displayedColumns = ['number', 'extended'];
 
   @Input()
-  set list(list: [any]) {
+  set list(list: any[]) {
     if (list) {
       this._list = list;
     }
   }
 
-  private _list: [any];
+  private _list: any[];
 
   get list() {
     return this._list;

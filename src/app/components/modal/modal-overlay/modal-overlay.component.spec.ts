@@ -4,8 +4,8 @@ import { ModalOverlayComponent } from './modal-overlay.component';
 import { MatDialogModule, MatDialog } from '@angular/material';
 
 describe('ModalOverlayComponent', () => {
-  let component: ModalOverlayComponent;
-  let fixture: ComponentFixture<ModalOverlayComponent>;
+  // let component: ModalOverlayComponent;
+  // let fixture: ComponentFixture<ModalOverlayComponent>;
 
   // beforeEach(async(() => {
   //   TestBed.configureTestingModule({
