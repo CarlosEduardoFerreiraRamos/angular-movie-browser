@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { PopupMessageComponent } from './popup-message.component';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material';
 
 describe('PopupMessageComponent', () => {
   let component: PopupMessageComponent;
@@ -8,7 +10,12 @@ describe('PopupMessageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PopupMessageComponent ]
+      declarations: [PopupMessageComponent],
+  imports: [
+    CommonModule,
+    MatSnackBarModule
+  ],
+  providers: [MatSnackBar]
     })
     .compileComponents();
   }));

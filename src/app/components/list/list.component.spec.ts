@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ListComponent } from './list.component';
+import { MatTableModule } from '@angular/material';
+import { ListService } from './list.service';
+
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -8,7 +12,12 @@ describe('ListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListComponent ]
+      declarations: [ListComponent],
+      imports: [
+        MatTableModule,
+        CommonModule,
+      ],
+      providers: [ListService]
     })
     .compileComponents();
   }));
