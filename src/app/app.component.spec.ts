@@ -122,7 +122,7 @@ fdescribe('AppComponent', () => {
     // expect(app).toBeTruthy();
   });
 
-  it('should load modal content', async () => {
+  fit('should load modal content', async () => {
     const debugModal: DebugElement = appFixture.debugElement.query(By.directive(ModalComponent));
     const movie$ = app.onOpenDetail('tt1343727').pipe(tap( () => appFixture.detectChanges()), first(), share());
     debugModal.componentInstance.onOpen(movie$);
@@ -135,7 +135,7 @@ fdescribe('AppComponent', () => {
   //   const movie$ = app.onOpenDetail('tt1343727').pipe(tap( () => appFixture.detectChanges()), first(), share());
   //   debugModal.componentInstance.onOpen(movie$);
   //   const movie = await movie$.toPromise();
-  
+
   //   expect(appFixture.debugElement.nativeElement.offsetParent.querySelector('mat-dialog-content')).toBeTruthy();
   // });
 
