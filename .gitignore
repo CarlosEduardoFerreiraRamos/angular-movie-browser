@@ -46,6 +46,3 @@ Thumbs.db
 .firebase/
 .firebaserc
 firebase.json
-
-# others
-.netrc
