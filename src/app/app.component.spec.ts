@@ -27,6 +27,8 @@ let list: ListComponent;
 let app: AppComponent;
 let appFixture: ComponentFixture<AppComponent>;
 
+let movie: any[];
+
 function generateMokData() {
   const data = [];
   for ( let x = 0; x < 20; x ++) {
@@ -91,58 +93,29 @@ fdescribe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('shoud open modal', async () => {
+  beforeEach( async () => {
     const debugModal: DebugElement = appFixture.debugElement.query(By.directive(ModalComponent));
-    const movie$ = app.onOpenDetail('tt1343727').pipe(first(), share());
+    const movie$ = app.onOpenDetail('MOVIE_ID').pipe(tap( () => appFixture.detectChanges()), first(), share());
     debugModal.componentInstance.onOpen(movie$);
-    await movie$.toPromise();
-    expect(appFixture.debugElement.nativeElement.offsetParent.querySelector('mat-dialog-container')).toBeTruthy();
-
-    // });
-    //     app.onOpenDetail('tt1343727').pipe( finalize( () => {
-    //     console.log('finalizy');
-    //     appFixture.detectChanges();
-    //     setTimeout(() => {
-    //       appFixture.detectChanges();
-    //       console.log(appFixture.debugElement.nativeElement.offsetParent.querySelector('mat-dialog-container'))
-    //       // console.log(appFixture.debugElement.nativeElement.offsetParent.querySelector('app-modal-overlay'))
-    //     }, 500);
-    //     // console.log(appFixture.debugElement.nativeElement.offsetParent.querySelector('mat-dialog-container'))
-    //     // console.log(appFixture.debugElement.nativeElement.offsetParent.querySelector('app-modal-overlay'))
-    //     // console.log(appFixture.debugElement.nativeElement);
-    //     // console.log(appFixture.debugElement.query(By.directive(MatDialogContainer)));
-    //     // console.log(appFixture.debugElement.nativeElement);
-    //     // console.log(debugModal.nativeElement);
-    //   }))
-    // );
-    // appFixture.detectChanges();
-    // console.log(appFixture.nativeElement);
-    // console.log(appFixture.debugElement.query(By.directive(MatDialogContainer)));
-    // console.log(debugModal.nativeElement);
-    // expect(app).toBeTruthy();
+    const [ movieOne ] = await movie$.toPromise();
+    movie = movieOne;
   });
 
-  fit('should load modal content', async () => {
-    const debugModal: DebugElement = appFixture.debugElement.query(By.directive(ModalComponent));
-    const movie$ = app.onOpenDetail('tt1343727').pipe(tap( () => appFixture.detectChanges()), first(), share());
-    debugModal.componentInstance.onOpen(movie$);
-    await movie$.toPromise();
+  it('shoud open modal', () => {
+    expect(appFixture.debugElement.nativeElement.offsetParent.querySelector('mat-dialog-container')).toBeTruthy();
+  });
+
+  it('should load modal content', () => {
     expect(appFixture.debugElement.nativeElement.offsetParent.querySelector('mat-dialog-content')).toBeTruthy();
   });
 
-  // it('should load modal image content', async() => {
-  //   const debugModal: DebugElement = appFixture.debugElement.query(By.directive(ModalComponent));
-  //   const movie$ = app.onOpenDetail('tt1343727').pipe(tap( () => appFixture.detectChanges()), first(), share());
-  //   debugModal.componentInstance.onOpen(movie$);
-  //   const movie = await movie$.toPromise();
+  it('should load modal image content', () => {
+    expect(appFixture.debugElement.nativeElement.offsetParent.querySelector('img').src).toBeTruthy();
+  });
 
-  //   expect(appFixture.debugElement.nativeElement.offsetParent.querySelector('mat-dialog-content')).toBeTruthy();
-  // });
-
-  // it('should load modal description content', async() => {
-
-  // });
-
-
+  it('should load modal description content', async() => {
+    const lengthOfDescription = Object.keys(movie).length > 3;
+    expect(lengthOfDescription).toBeTruthy();
+  });
 
 });

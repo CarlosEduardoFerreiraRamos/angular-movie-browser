@@ -13,8 +13,8 @@ export class MockHttpsInterceptService implements HttpInterceptor {
     return of(req).pipe(
       switchMap(
         requesition => this._backEnd.hasMockService(requesition) ?
-        this._backEnd.getMockedRequest(req) :
-        next.handle(requesition)
+          this._backEnd.getMockedRequest(req) :
+          next.handle(requesition)
       )
     );
   }
