@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   movieApi: 'https://www.omdbapi.com',
-  movieApiKey: ''
+  movieApiKey: '13a1bc7d'
 };
 
 /*
